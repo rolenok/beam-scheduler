@@ -1,8 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask
 #from flask_bcrypt import bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_cors import CORS
+from flask import render_template
+from flask import request
 
 import time
 import sys
@@ -87,16 +89,30 @@ class scheduleLBNL(db.Model):
     def __repr__(self):
         return "<Times(id=%s, start=%s, end=%s)>" % (self.id, self.scheduled_start, self.scheduled_end)
 
+class testRequest(db.Model):
+    __tablename__ = 'testRequest'
 
-"""TODO: add approved request to database"""
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255),nullable=False)
+    cell = db.Column(db.String(255),nullable=False)
+    scheduled_start = db.Column(db.String(255),nullable=False)
+    scheduled_end = db.Column(db.String(255),nullable=False)
+    createdOn = db.Column(db.DateTime(),default=datetime.utcnow)
 
-def pushRequest():
-	return "Operation Successful. TODO: add approved request to database"
+    """dataInfo = "<Times(id=%s, start=%s, end=%s createdOn=%s)>" % (this.id,this.scheduled_start,
+                                                                  this.scheduled_end,this.createdOn)"""
+    def create_request(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def __repr__(self):
+        return "<Times(id=%s, start=%s, end=%s createdOn=%s)>" % (self.id, self.scheduled_start,
+                                                                  self.scheduled_end, self.createdOn)
 
 """TODO: Radix Sort"""
 def sortRequests():
 	return "TODO: Radix Sort"
-
 
 def findPerfectSixteens():
 	return "TODO: Find Perfect Sixteens"
@@ -104,13 +120,44 @@ def findPerfectSixteens():
 def findPerfectEights():
 	return "TODO: Find Perfect Eights"
 
-@app.route('/', methods=['GET'])
-
-def home():
+"""WORK IN PROGRESS: This is the function to render home.html which will allow us
+                     to submit requests to the database """
+@app.route('/requestFormPage',methods=['GET','POST'])
+def requestFormPage():
+    pushRequest()
     return render_template('home.html')
 
+"""WORK IN PROGRESS: This is the function to accept form input from home.html
+                     and push the request to the database. """
+@app.route('/pushRequest', methods=['GET','POST'])
+def pushRequest():
+    try:
+        fullName = request.form['name']
+        email = request.form['email']
+        cell = request.form['cell']
+        scheduled_start = request.form['start_date']
+        scheduled_end = request.form['end_date']
+
+        gen_Request = testRequest()
+        gen_Request.name = fullName
+        gen_Request.email = email
+        gen_Request.cell = cell
+        gen_Request.scheduled_start = scheduled_start
+        gen_Request.scheduled_end = scheduled_end
+
+
+    except Exception as e:
+        return(str(e))
+
+    return render_template('dbOutput.html',name=gen_Request.name,email=gen_Request.email,
+                                           cell = gen_Request.cell, start_date = gen_Request.scheduled_start,
+                                           end_date= gen_Request.scheduled_end,
+                                           data_info = gen_Request.__repr__())
+
+@app.route('/test1', methods=['GET'])
 def scheduleLBNL():
     return pushRequest()
 
+
 if __name__ == '__main__':
-	app.run(debug=False)
+    app.run(debug=False)
