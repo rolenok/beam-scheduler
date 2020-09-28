@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 #from flask_bcrypt import bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -105,6 +105,9 @@ def findPerfectEights():
 	return "TODO: Find Perfect Eights"
 
 @app.route('/', methods=['GET'])
+
+def home():
+    return render_template('home.html')
 
 def scheduleLBNL():
     return pushRequest()
