@@ -21,3 +21,6 @@ WINDOWS setup:
 
 6)go to browser and enter https://127.0.0.1:5000 
 
+
+Current access to webpage: http://127.0.0.1:5000/requestFormPage 
+
