@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title> DB Output</title>
+        <title> DB Output </title>
     </head>
     <body>
         <h1> name: {{ name }} </h1>
@@ -8,6 +8,38 @@
         <h2> cell: {{ cell }} </h2>
         <h2> start date: {{ start_date }} </h2>
         <h2> end date: {{ end_date }} </h2>
+        <h2> Hours Requested: {{ hours_req }} </h2>
         <h3> DataEntry Info: {{ data_info }} </h3>
+
+        <table class="data" border="1" style="width: 100%; margin-top: 20px; text-align: center;">
+		        <tr>
+			           <th colspan="6">Request Data</th>
+	  	     </tr>
+	  	     <tr>
+	    	      <td>Name</td>
+	    	      <td>Email</td>
+              <td>Cell</td>
+              <td>Start Date</td>
+              <td>End Date</td>
+              <td>Hours Requested</td>
+          </tr>
+
+	  	<!-- The user_data is a variable containing all the user data from the DB. -->
+
+
+	  	    <tr>
+            <td>{{entry.name}}</td>
+	  		    <td>{{entry.email}}</td>
+	  		    <td>{{entry.cell}}</td>
+            <td>{{entry.scheduled_start}}</td>
+            <td>{{entry.scheduled_end}}</td>
+            <td>{{entry.hours_req}}</td>
+	  	    </tr>
+
+
+	      </table>
+
+
+
     </body>
 </html>
