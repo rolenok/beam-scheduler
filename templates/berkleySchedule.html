@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title> Berkley Schedule </title>
+    </head>
+    <body>
+        <h1> Schedule </h1>
+
+        <table class="data" border="1" style="width: 100%; margin-top: 20px; text-align: center;">
+		        <tr>
+			           <th colspan="7">Request Data</th>
+	  	     </tr>
+	  	     <tr>
+              <td>ID</td>
+	    	      <td>Name</td>
+	    	      <td>Email</td>
+              <td>Cell</td>
+              <td>Start Date</td>
+              <td>End Date</td>
+              <td>Hours Requested</td>
+          </tr>
+
+	  	<!-- The user_data is a variable containing all the user data from the DB. -->
+
+          {% for request in requests %}
+	  	    <tr>
+            <td>{{request.id}}</td>
+            <td>{{request.name}}</td>
+	  		    <td>{{request.email}}</td>
+	  		    <td>{{request.cell}}</td>
+            <td>{{request.scheduled_start}}</td>
+            <td>{{request.scheduled_end}}</td>
+            <td>{{request.hours_req}}</td>
+          </tr>
+          {% endfor %}
+
+	      </table>
+
+
+
+    </body>
+</html>

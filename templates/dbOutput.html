@@ -9,11 +9,12 @@
         <h2> start date: {{ start_date }} </h2>
         <h2> end date: {{ end_date }} </h2>
         <h2> Hours Requested: {{ hours_req }} </h2>
+        <h2> Facility: {{ facility }} </h2>
         <h3> DataEntry Info: {{ data_info }} </h3>
 
         <table class="data" border="1" style="width: 100%; margin-top: 20px; text-align: center;">
 		        <tr>
-			           <th colspan="6">Request Data</th>
+			           <th colspan="7">Request Data</th>
 	  	     </tr>
 	  	     <tr>
 	    	      <td>Name</td>
@@ -22,6 +23,7 @@
               <td>Start Date</td>
               <td>End Date</td>
               <td>Hours Requested</td>
+              <td>Facility</td>
           </tr>
 
 	  	<!-- The user_data is a variable containing all the user data from the DB. -->
@@ -34,6 +36,7 @@
             <td>{{entry.scheduled_start}}</td>
             <td>{{entry.scheduled_end}}</td>
             <td>{{entry.hours_req}}</td>
+            <td>{{entry.facility}}</td>
 	  	    </tr>
 
 
