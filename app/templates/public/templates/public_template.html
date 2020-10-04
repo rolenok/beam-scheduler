@@ -29,6 +29,13 @@
       <li class="nav-item">
         <a class="nav-link" href="/about">About</a>
       </li>
+      <li class="nav-item">
+        {% if current_user.is_anonymous %}
+        <a class="nav-link" href="{{url_for('login')}}">Login</a>
+        {% else %}
+        <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+        {% endif %}
+      </li>
     </ul>
   </div>
 
@@ -41,7 +48,16 @@
   </div>
 
 </nav>
-
+<hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
   <main>
     {% block main %}{% endblock %}
   </main>
