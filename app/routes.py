@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect
+from flask import render_template, flash, redirect, url_for
 from app import app
 from app.forms import LoginForm
 from app.models import User
@@ -12,6 +12,11 @@ def index():
 	user = {'username' : 'Duncan'}
 	return render_template('public/index.html', title='Home', user=user)
 
+@app.route('/public/LBNL')
+@login_required
+def LBNL():
+	
+	return render_template('public/LBNL.html')
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 	if current_user.is_authenticated:

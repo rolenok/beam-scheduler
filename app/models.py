@@ -49,8 +49,8 @@ class Request(db.Model):
 	hours = db.Column(db.Integer, index = True)
 	beam_size = db.Column(db.Integer, index = True)
 	#range = db.Column()
-	scheduled_start = db.Column(db.DateTime)
-	scheduled_end = db.Column(db.DateTime)
+	scheduled_start = db.Column(db.String(28))
+	scheduled_end = db.Column(db.String(28))
 
 	def __repr__(self):
 		return '<Request {}>'.format(self.id)    
