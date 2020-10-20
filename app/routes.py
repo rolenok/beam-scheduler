@@ -1,5 +1,6 @@
 from flask import render_template, flash, redirect, url_for
 from app import app
+
 from app.forms import LoginForm
 from app.models import User
 from flask_login import current_user, login_user, logout_user
@@ -9,7 +10,6 @@ from flask_login import login_required
 @app.route('/index')
 @login_required
 def index():
-	user = {'username' : 'Duncan'}
 	return render_template('public/index.html', title='Home', user=user)
 
 @app.route('/public/LBNL')

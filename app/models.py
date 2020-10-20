@@ -40,6 +40,7 @@ class Request(db.Model):
 	user_id = db.Column(db.String(64), db.ForeignKey('user.id'), index= True, unique = True)
 	is_approved= db.Column(db.Boolean, default = False)
 	status = db.Column(db.String(16), index=True, unique= False)
+	is_maintenance = db.Column(db.Boolean, default = False)
 	beam = db.Column(db.String(16), index=True, unique = False)
 	ion = db.Column(db.Integer, index = True, unique = False)
 	energy = db.Column(db.Integer, index = True)
@@ -49,8 +50,8 @@ class Request(db.Model):
 	hours = db.Column(db.Integer, index = True)
 	beam_size = db.Column(db.Integer, index = True)
 	#range = db.Column()
-	scheduled_start = db.Column(db.String(28))
-	scheduled_end = db.Column(db.String(28))
+	scheduled_start = db.Column(db.DateTime, index=True)
+	scheduled_end = db.Column(db.DateTime, index=True)
 
 	def __repr__(self):
 		return '<Request {}>'.format(self.id)    
