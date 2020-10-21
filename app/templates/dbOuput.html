@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title> DB Output </title>
+    </head>
+    <body>
+        <h1> Facility: {{ facility }} </h1>
+        <h2> Beam: {{ beam }} </h2>
+        <h2> Beam Size: {{ beam_size }} </h2>
+        <h2> Ion: {{ ion }}</h2>
+        <h2> Energy: {{ energy }}</h2>
+        <h2> Fluence: {{ fluence }}</h2>
+        <h2> Flux: {{ flux }}</h2>
+        <h2> start date: {{ start_date }} </h2>
+        <h2> end date: {{ end_date }} </h2>
+        <h2> Hours Requested: {{ hours_req }} </h2>
+        <h3> DataEntry Info: {{ data_info }} </h3>
+
+        <table class="data" border="1" style="width: 100%; margin-top: 20px; text-align: center;">
+		        <tr>
+			           <th colspan="10">Request Data</th>
+	  	     </tr>
+	  	     <tr>
+	    	      <td>Facility</td>
+	    	      <td>Beam</td>
+              <td>Beam Size</td>
+              <td>Ion</td>
+              <td>Energy</td>
+              <td>Fluence</td>
+              <td>Flux</td>
+              <td>Start Date</td>
+              <td>End Date</td>
+              <td>Hours Requested</td>
+
+          </tr>
+
+	  	<!-- The user_data is a variable containing all the user data from the DB. -->
+
+	  	    <tr>
+            <td>{{entry.facility}}</td>
+	  		    <td>{{entry.beam}}</td>
+	  		    <td>{{entry.beam_size}}</td>
+            <td>{{entry.ion}}</td>
+            <td>{{entry.energy}}</td>
+            <td>{{entry.fluence}}</td>
+            <td>{{entry.flux}}</td>
+            <td>{{entry.scheduled_start}}</td>
+            <td>{{entry.scheduled_end}}</td>
+            <td>{{entry.hours}}</td>
+	  	    </tr>
+
+
+	      </table>
+
+
+
+    </body>
+</html>

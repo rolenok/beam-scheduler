@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Request Submission Test Page</h1>
+<p>Please fill in the following information.</p>
+<form action="{{url_for('pushRequest')}}" method="post">
+    <label for="name">Enter your Name:</label>
+    <input type="text" id="name" name="name"><br><br>
+
+    <label for="testFacility">Testing Facility:</label>
+    <input type="text" id="facility" name="facility"><br><br>
+
+    <label for="company">Company:</label>
+    <input type="text" id="company" name="company"><br><br>
+
+    <label for="beam">Beam:</label>
+    <input type="text" id="beam" name="beam"><br><br>
+    <label for="beam_size">Beam Size:</label>
+    <input type="text" id="beam_size" name="beam_size"><br><br>
+    <label for="Ion">Ion:</label>
+    <input type="text" id="ion" name="ion"><br><br>
+
+    <label for="energy">Energy:</label>
+    <input type="text" id="energy" name="energy"><br><br>
+    <label for="fluence">Fluence:</label>
+    <input type="text" id="fluence" name="fluence"><br><br>
+    <label for="flux">Flux:</label>
+    <input type="text" id="flux" name="flux"><br><br>
+
+
+    <label for="start_date">Start Date(mm/dd/yyyy):</label>
+    <input type="text" id="start_date" name="start_date"><br><br>
+    <label for="end_date">End Date(mm/dd/yyyy):</label>
+    <input type="text" id="end_date" name="end_date"><br><br>
+
+    <label for="Hours_Req">Hours Requested: </label>
+    <input type="text" id="hours_req" name="hours_req"><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
