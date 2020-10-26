@@ -143,7 +143,8 @@ def sort_by_priority(reqlist, p1, p2, p3):
 
 					if req.range != tmp.range
 						schedule.append(tmp)  
-
+	
+	while (!reqlist.is_empty()):
 	tmp_reqlist = reqlist
 	p_max = 0
 	for req in tmp_reqlist:
@@ -152,7 +153,7 @@ def sort_by_priority(reqlist, p1, p2, p3):
 			tmp = req
 			tmp.range = tmp.scheduled_start - tmp_scheduled_end
 			for req in reqlist:
-				if req.range != tmp.r
+				if req.range != tmp.range
 
 
 def create_schedule(reqlist, max_hours):
@@ -200,4 +201,3 @@ def create_schedule(reqlist, max_hours):
 
 #max_hours = 240
 #create_schedule(reqlist,max_hours)
-create_request_duration()
