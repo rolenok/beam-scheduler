@@ -31,7 +31,6 @@ def sort_requests_by_priority(reqlist):
 
 def create_request_duration():
 	#Getting time between two dates
-
 	try: 
 		query = db.session.query(Request)
 		for req in query:
@@ -60,6 +59,22 @@ def split_requests(reqlist):
 
 	return requests_to_split
 
+def process_split_requests(requests_to_split):
+	try :
+		schedule = []
+		for req in requests_to_split:
+			if (req.split == True):
+				schedule.append(req)
+				req.hours = req.hours - 8;
+				#if range == 5:	
+					#then the max value between shifts can be 5 days 
+
+def modulo_hours(reqlist):
+	for req in reqlist:
+		if ((req.hours % 8) != 0):
+			h = req.hours % 8
+			req.hours = req.hours + h;
+
 def assign_priority(reqlist):
 
 	try: 
@@ -72,6 +87,8 @@ def assign_priority(reqlist):
 
 	except Exception as e:
 		print(e)
+
+
 '''
 def is_stale(reqlist):
 	try:
@@ -99,6 +116,45 @@ def removeMaintenance(reqlist):
 				reqlist.remove(req)
 	return maintenance
 '''
+
+#p1 == hours
+#p2 == fluence
+def sort_by_priority(reqlist, p1, p2, p3): 
+	schedule = []
+	p_max = 0;
+	tmp_reqlist = reqlist
+
+	for req in tmp_reqlist:
+		if (req.p1 >= p_max):
+			req.p1 = p_max
+			schedule.append(req)
+			tmp_reqlist.remove(req)
+
+	tmp_reqlist = reqlist
+	p_max = 0
+
+	while (!reqlist.is_empty()):
+		for req in tmp_reqlist: 
+			if (req.p2 >= p_max):
+				req.p2 = p_max
+				tmp = req
+				tmp.range = tmp.scheduled_start - tmp.scheduled_end
+				for req in reqlist:
+
+					if req.range != tmp.range
+						schedule.append(tmp)  
+
+	tmp_reqlist = reqlist
+	p_max = 0
+	for req in tmp_reqlist:
+		if req.p3 >= p_max:
+			req.p3 = p_max
+			tmp = req
+			tmp.range = tmp.scheduled_start - tmp_scheduled_end
+			for req in reqlist:
+				if req.range != tmp.r
+
+
 def create_schedule(reqlist, max_hours):
 	try: 
 		sort_requests_by_duration(reqlist, max_hours)
