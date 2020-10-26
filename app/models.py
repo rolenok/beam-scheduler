@@ -21,6 +21,7 @@ class User(UserMixin, db.Model):
 	fname = db.Column(db.String(28), index=True, unique=False)
 	lname = db.Column(db.String(28), index=True, unique=False)
 	requests = db.relationship('Request', backref='author', lazy='dynamic')
+	priority=db.Column(db.String(64))
 
 	def __repr__(self):
 		return '<User {}>'.format(self.username)
@@ -52,6 +53,12 @@ class Request(db.Model):
 	#range = db.Column()
 	scheduled_start = db.Column(db.DateTime, index=True)
 	scheduled_end = db.Column(db.DateTime, index=True)
+	range = db.Column(db.Integer, index=True)
+	is_splittable=db.Column(db.Boolean, index=True, default=False)
+	split = db.Column(db.Boolean,index=True, default=False)
+	shifts = db.Column(db.Integer, index=True)
+	priority=db.Column(db.Integer) # 1 : low 2 : medium 3 : high 4 : ultimate
+	stale = db.Column(db.Boolean)
 
 	def __repr__(self):
 		return '<Request {}>'.format(self.id)    
@@ -75,4 +82,4 @@ class scheduleTAMU(db.Model):
 class scheduleBerkley(db.Model):
 
 '''
-
+#db.create_all()
