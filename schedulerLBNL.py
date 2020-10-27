@@ -76,7 +76,6 @@ def modulo_hours(reqlist):
 			req.hours = req.hours + h;
 
 def assign_priority(reqlist):
-
 	try: 
 		for req in reqlist:
 			req.author.priority=req.priority
@@ -87,7 +86,6 @@ def assign_priority(reqlist):
 
 	except Exception as e:
 		print(e)
-
 
 '''
 def is_stale(reqlist):
@@ -119,41 +117,24 @@ def removeMaintenance(reqlist):
 
 #p1 == hours
 #p2 == fluence
-def sort_by_priority(reqlist, p1, p2, p3): 
-	schedule = []
-	p_max = 0;
-	tmp_reqlist = reqlist
 
-	for req in tmp_reqlist:
-		if (req.p1 >= p_max):
-			req.p1 = p_max
-			schedule.append(req)
-			tmp_reqlist.remove(req)
-
-	tmp_reqlist = reqlist
+def psort(reqlist, p)
 	p_max = 0
-
+	tmp_reqlist = reqlist
 	while (!reqlist.is_empty()):
 		for req in tmp_reqlist: 
-			if (req.p2 >= p_max):
-				req.p2 = p_max
+			if (req.p >= p_max):
+				req.p = p_max
 				tmp = req
 				tmp.range = tmp.scheduled_start - tmp.scheduled_end
 				for req in reqlist:
-
 					if req.range != tmp.range
-						schedule.append(tmp)  
-	
-	while (!reqlist.is_empty()):
-	tmp_reqlist = reqlist
-	p_max = 0
-	for req in tmp_reqlist:
-		if req.p3 >= p_max:
-			req.p3 = p_max
-			tmp = req
-			tmp.range = tmp.scheduled_start - tmp_scheduled_end
-			for req in reqlist:
-				if req.range != tmp.range
+						schedule.append(tmp)
+
+def sort_by_priority(reqlist, *argv): 
+
+	for i in *argv.items()
+		psort(reqlist, i)
 
 
 def create_schedule(reqlist, max_hours):
