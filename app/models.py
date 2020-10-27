@@ -52,9 +52,15 @@ class Request(db.Model):
 	#range = db.Column()
 	scheduled_start = db.Column(db.DateTime, index=True)
 	scheduled_end = db.Column(db.DateTime, index=True)
+	#NEW FIELDS
+	proj_id = db.Column(db.Integer, index=True)
+	is_priority = db.Column(db.Boolean, default = False, index=True)
+	workday = db.Column(db.DateTime, index=True)
 
 	def __repr__(self):
-		return '<Request {}>'.format(self.id)    
+		return '<Request {}>'.format(self.id)
+
+
 
 '''
 class NSRL(db.Model):
@@ -75,4 +81,3 @@ class scheduleTAMU(db.Model):
 class scheduleBerkley(db.Model):
 
 '''
-
