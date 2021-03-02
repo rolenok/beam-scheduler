@@ -1,11 +1,12 @@
 import time
 import datetime
 from app import db
+import app.models
 from app.models import Request
 
 # These are sample requests that are made to test out our algorithm
-r = Request(id='1',hours=32, scheduled_start=datetime(2020,10,1,0,0,0), scheduled_end=datetime(2020,10,2,16,0,0))
-r1 = Request(id='2',hours=64, scheduled_start=datetime(2020,10,2,16,0,0),scheduled_end=datetime(2020,10,,0,0,0))
+r = Request(id='1',hours=32) #scheduled_start=datetime(2020,10,1,0,0,0), scheduled_end=datetime(2020,10,2,16,0,0))
+r1 = Request(id='2',hours=64, scheduled_start=datetime(2020,10,2,16,0,0),scheduled_end=datetime(2020,10,0,0,0))
 r2 = Request(id='3',hours=8, scheduled_start=datetime(2020,10,3,0,0,0), scheduled_end=datetime(2020,10,1,0,0,0))
 r3 = Request(id='4',hours=16, scheduled_start=datetime(2020,10,1,0,0,0), scheduled_end=datetime(2020,10,1,0,0,0))
 r4 = Request(id='5',hours=8, scheduled_start=datetime(2020,10,1,0,0,0), scheduled_end=datetime(2020,10,1,0,0,0),is_maintenance=True)

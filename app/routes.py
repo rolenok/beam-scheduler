@@ -15,7 +15,7 @@ def index():
 @app.route('/public/LBNL')
 @login_required
 def LBNL():
-	
+
 	return render_template('public/LBNL.html')
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -31,8 +31,19 @@ def login():
 		return redirect(url_for('index'))
 	return render_template('public/login.html',title='Sign In', form=form)
 
+@app.route('/public/schedule', methods=['GET'])
+@login_required
+	def schedule():
+		if current_user.is_authenticated:
+			return render_template('public/schedule.html', title='Main View')
+
 @app.route('/logout')
 def logout():
 	logout_user()
 	return redirect(url_for('index'))
 
+@app.route('admin/integrator/schedule', methods=['GET','POST'])
+@login_required
+	def admin_schedule:
+	if current_user.is_authenticated:
+		return render_template('admin/integrator/schedule.html', title='Main View')

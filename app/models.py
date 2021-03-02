@@ -56,10 +56,9 @@ class Request(db.Model):
 	def __repr__(self):
 		return '<Request {}>'.format(self.id)    
 
-'''
-class NSRL(db.Model):
-#TODO add timeboard as base_schedule
 
+#TODO add timeboard as base_schedule
+'''
 class LBNL(db.Model):
 #TODO add timeboard as base_schedule
 
