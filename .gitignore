@@ -1,3 +1,5 @@
 #Untrack folders
 beam-scheduler/migrations
-*.pyc
+beam-scheduler/venv
+beam-scheduler/__pycache__
+beam-scheduler/app.db
