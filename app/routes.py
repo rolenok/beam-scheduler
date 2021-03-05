@@ -31,11 +31,17 @@ def login():
 		return redirect(url_for('index'))
 	return render_template('public/login.html',title='Sign In', form=form)
 
-@app.route('/public/schedule', methods=['GET'])
+@app.route('/public/base_schedule', methods=['GET'])
 @login_required
-	def schedule():
+	def base_schedule():
 		if current_user.is_authenticated:
 			return render_template('public/schedule.html', title='Main View')
+
+@app.route('public/concise_schedule.html', methods='GET', 'POST')
+@login_required
+	def concise_schedule():
+		if current_user.is_authenticated():
+			
 
 @app.route('/logout')
 def logout():

@@ -1,0 +1,3 @@
+#Untrack folders
+beam-scheduler/migrations
+*.pyc
