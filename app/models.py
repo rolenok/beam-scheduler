@@ -50,7 +50,7 @@ class Request(db.Model):
 	LET = db.Column(db.Integer, index = True)
 	hours = db.Column(db.Integer, index = True)
 	beam_size = db.Column(db.Integer, index = True)
-	range = db.Column(db.DateTime, index = True)
+	#range = db.Column(db.DateTime, index = True)
 	scheduled_start = db.Column(db.DateTime, index=True)
 	scheduled_end = db.Column(db.DateTime, index=True)
 	range = db.Column(db.Integer, index=True)

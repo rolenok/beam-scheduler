@@ -1,7 +1,6 @@
 import time
 from datetime import datetime
 from app import db
-<<<<<<< HEAD
 import app.models
 from app.models import Request
 
@@ -25,7 +24,6 @@ r15 = Request(id='16',hours=8, scheduled_start=datetime(2020,10,1,0,0,0), schedu
 r16 = Request(id='17',hours=8, scheduled_start=datetime(2020,10,1,0,0,0), scheduled_end=datetime(2020,10,1,0,0,0))
 #Adding the requests into a list so we can commit them to our database model
 reqlist=[r,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16]
-=======
 from app.models import Request, User
 
 
@@ -39,7 +37,6 @@ r6 = Request(scheduled_start=datetime(2020,1,25,0,0,0), scheduled_end=datetime(2
 r7 = Request(scheduled_start=datetime(2020,1,23,0,0,0), scheduled_end=datetime(2020,1,24,0,0,0), is_maintenance=True)
 
 reqlist=[r1,r2,r3,r4,r5,r6,r7]
->>>>>>> 8389c92069faea641cd4804cc3129f6b29d9d77f
 # Printing requests to see if our list of objects worked
 # for req in reqlist:
 # 	print(req.id, req.hours, req.scheduled_start, req.scheduled_end)
